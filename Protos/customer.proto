@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "Demo2Grpc.Protos";
+
+
+service GrpcCustomer {
+    rpc GetAll (Empty) returns (CustomerList);
+    rpc GetCustomer (IDRequest) returns (Customer);
+    rpc AddCustomer (Customer) returns (Empty);
+    rpc UpdateCustomer (Customer) returns (Empty);
+    rpc DeleteCustomer (IDRequest) returns (Empty);
+
+}
+
+message Empty{}
+
+message IDRequest {
+    string id = 1;
+}
+
+message Customer {
+    string id = 1;
+    string Name = 2;
+    string Address = 3;
+}
+
+message CustomerList {
+    repeated Customer customers = 1;
+}
